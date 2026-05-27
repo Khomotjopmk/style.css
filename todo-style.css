@@ -1,0 +1,444 @@
+/* ========================================
+   TO-DO LIST APPLICATION - STYLESHEET
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #d4623f;
+    --secondary-color: #f39c42;
+    --success-color: #27ae60;
+    --danger-color: #e74c3c;
+    --dark-color: #2c3e50;
+    --light-color: #ecf0f1;
+    --white: #ffffff;
+    --text-color: #333333;
+    --border-color: #bdc3c7;
+    --gray-color: #95a5a6;
+    --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 1rem;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 600px;
+    margin: 2rem auto;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+/* ========== HEADER ========== */
+header {
+    background: linear-gradient(135deg, var(--dark-color) 0%, var(--primary-color) 100%);
+    color: var(--white);
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* ========== INPUT SECTION ========== */
+.input-section {
+    padding: 1.5rem;
+    border-bottom: 2px solid var(--light-color);
+}
+
+#todoForm {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#todoInput {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+#todoInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(212, 98, 63, 0.3);
+}
+
+.add-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.add-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.add-btn:active {
+    transform: translateY(0);
+}
+
+/* ========== FILTER SECTION ========== */
+.filter-section {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid var(--light-color);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border-color);
+    background-color: var(--white);
+    color: var(--text-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+}
+
+/* ========== STATS SECTION ========== */
+.stats-section {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 2px solid var(--light-color);
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: var(--light-color);
+}
+
+.stat {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.stat span {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+/* ========== TODO LIST ========== */
+.todo-list {
+    list-style: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.todo-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+    background: var(--light-color);
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.todo-list::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-color);
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--light-color);
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.todo-item:hover {
+    background-color: var(--light-color);
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: var(--gray-color);
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: var(--primary-color);
+}
+
+.todo-text {
+    flex: 1;
+    font-size: 1rem;
+    color: var(--text-color);
+    word-break: break-word;
+    transition: all 0.3s ease;
+}
+
+.todo-priority {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.priority-high {
+    background-color: #ffebee;
+    color: var(--danger-color);
+}
+
+.priority-medium {
+    background-color: #fff3e0;
+    color: var(--secondary-color);
+}
+
+.priority-low {
+    background-color: #e8f5e9;
+    color: var(--success-color);
+}
+
+.delete-btn {
+    background-color: var(--danger-color);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
+/* ========== EMPTY STATE ========== */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: var(--gray-color);
+    font-size: 1.1rem;
+}
+
+.empty-state.hidden {
+    display: none;
+}
+
+/* ========== ACTION SECTION ========== */
+.action-section {
+    display: flex;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    border-top: 2px solid var(--light-color);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.clear-btn,
+.clear-all-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--border-color);
+    background-color: var(--white);
+    color: var(--text-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.clear-btn:hover {
+    background-color: var(--light-color);
+    border-color: var(--gray-color);
+}
+
+.clear-all-btn {
+    background-color: var(--danger-color);
+    color: var(--white);
+    border-color: var(--danger-color);
+}
+
+.clear-all-btn:hover {
+    background-color: #c0392b;
+    border-color: #c0392b;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 600px) {
+    .container {
+        margin: 1rem auto;
+        border-radius: 8px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    #todoForm {
+        flex-direction: column;
+    }
+
+    .add-btn {
+        width: 100%;
+    }
+
+    .filter-section,
+    .stats-section,
+    .action-section {
+        gap: 0.5rem;
+    }
+
+    .stat {
+        font-size: 0.85rem;
+    }
+
+    .todo-item {
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .todo-text {
+        font-size: 0.95rem;
+    }
+
+    .delete-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.75rem;
+    }
+
+    .clear-btn,
+    .clear-all-btn {
+        flex: 1;
+        min-width: 120px;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .todo-list {
+        max-height: 300px;
+    }
+}
+
+@media (max-width: 400px) {
+    header {
+        padding: 1.5rem 1rem;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.8rem;
+    }
+
+    .input-section,
+    .filter-section,
+    .stats-section,
+    .action-section {
+        padding: 0.75rem 1rem;
+    }
+
+    .filter-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .stat {
+        font-size: 0.75rem;
+    }
+
+    .todo-item {
+        gap: 0.5rem;
+        padding: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .todo-priority {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.65rem;
+    }
+
+    .delete-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    .todo-list {
+        max-height: 250px;
+    }
+}
